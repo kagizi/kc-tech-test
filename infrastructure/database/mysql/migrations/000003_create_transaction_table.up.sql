@@ -1,0 +1,8 @@
+CREATE TABLE transactions (
+    id BINARY(16) PRIMARY KEY,
+    wallet_id BINARY(16) NOT NULL,
+    amount DECIMAL(15,2) NOT NULL,
+    type ENUM('WITHDRAWAL', 'DEPOSIT') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (wallet_id) REFERENCES wallets(id) ON DELETE CASCADE
+);
